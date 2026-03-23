@@ -2,7 +2,9 @@ from supabase import create_client
 import os
 import uuid
 from datetime import datetime
+from dotenv import load_dotenv
 
+load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+import uvicorn
 from app.routes import agent_ws, frontend_ws, layer2, reports
 
 app = FastAPI()
@@ -17,3 +17,6 @@ app.include_router(agent_ws.router)
 app.include_router(frontend_ws.router)
 app.include_router(layer2.router)
 app.include_router(reports.router)
+
+if __name__ == "__main__":
+    uvicorn.run("app.main:app", reload=True)

@@ -14,7 +14,7 @@ async def agent_ws(websocket: WebSocket, device_id: str):
         while True:
             message = await websocket.receive_json()
             event = message.get("event")
-
+            print("Event received")
             if event == "SCAN_START":
                 user_id = get_user_by_device(device_id)
                 scan_id = create_scan(user_id, device_id)
