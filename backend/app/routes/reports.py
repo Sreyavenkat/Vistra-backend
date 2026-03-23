@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+# from app.database import get_files_by_device, get_scans_by_device
 from app.database import get_layer2_suspicious_files, get_layer1_scans
 
 router = APIRouter()
