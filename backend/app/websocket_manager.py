@@ -34,6 +34,7 @@ class ConnectionManager:
             return
 
         try:
+            print("sending data to agent")
             await ws.send_json(data)
         except Exception as e:
             print(f"[!] Send failed (agent {device_id}): {e}")
