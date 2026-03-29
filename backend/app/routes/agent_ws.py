@@ -18,7 +18,7 @@ async def agent_ws(websocket: WebSocket, device_id: str):
             message = await websocket.receive_json()
             print("🔥 FULL MESSAGE:", message)
             event = message.get("event")
-            print("🔥 RAW EVENT:", repr(event))
+            #print("🔥 RAW EVENT:", repr(event))
             #print("Event received")
             if event == "ping":
                 manager.last_seen[device_id] = time.time()
@@ -28,10 +28,11 @@ async def agent_ws(websocket: WebSocket, device_id: str):
                 #user_id = get_user_by_device(device_id)
                 #scan_id = create_scan(user_id, device_id)
                 #scan_id = message.get("scan_id")
-                scan_id = str(uuid.uuid4())
+                scan_id = message.get("scan_id")
                 print("SCAN_ID" , scan_id)
-                user_id = 1
-                device_id_db = 1
+                user_id = "krishnan"
+                device_id_db = message.get("device_id")
+                print("device id: ", device_id_db)
                 #layer = 1
                 #print("Creating scan in DB:" , scan_id)
                 create_scan(user_id, device_id_db, scan_id)

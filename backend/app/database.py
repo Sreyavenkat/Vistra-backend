@@ -98,13 +98,16 @@ def save_file(
     layer,
     quarantine_path=None
 ):
+    print("layer", layer)
+    layer_no = 1 if layer == "layer1" else 2
     supabase.table("files").insert({
+        "file_id": file_name + scan_id,
         "scan_id": scan_id,
         "file_path": file_path,
         "file_name": file_name,
         "action": action,
-        "file_score": file_score,
-        "layer": layer,
+        "file_score": int(file_score),
+        "layer": layer_no,
         "quarantine_path": quarantine_path
     }).execute()
 
